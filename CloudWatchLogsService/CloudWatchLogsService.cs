@@ -1,0 +1,42 @@
+﻿using Amazon.CloudWatchLogs;
+using Amazon.CloudWatchLogs.Model;
+using System.Linq;
+using System.Text;
+
+namespace BuildEmailNotification
+{
+    public class CloudWatchLogsService : ServiceBase
+    {
+        public string LogGroupName { get; set; }
+
+        public string LogStreamName { get; set; }
+
+        public int LogRowLimit { get; set; }
+
+        public CloudWatchLogsService()
+        {
+            Client = new AmazonCloudWatchLogsClient(GetRegionEndpoint("CLOUDWATCH_REGION"));
+        }
+
+        public string GetCloudWatchLogEvents()
+        {
+            var events = new StringBuilder();
+
+            var request = new GetLogEventsRequest()
+            {
+                LogGroupName = LogGroupName,
+                LogStreamName = LogStreamName,
+                Limit = LogRowLimit
+            };
+
+            var response = (Client as AmazonCloudWatchLogsClient).GetLogEventsAsync(request);
+
+            foreach (OutputLogEvent logEvent in response.Result.Events)
+            {
+                events.AppendLine(logEvent.Timestamp + ": " + logEvent.Message);
+            }
+
+            return events.ToString();
+        }
+    }
+}
