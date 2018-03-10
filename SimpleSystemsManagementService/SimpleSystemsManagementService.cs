@@ -2,6 +2,7 @@
 using Amazon.SimpleSystemsManagement.Model;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace BuildEmailNotification
 {
@@ -12,16 +13,28 @@ namespace BuildEmailNotification
             Client = new AmazonSimpleSystemsManagementClient(GetRegionEndpoint("SSM_REGION"));
         }
 
-        public List<string> GetParameterValues(string parameterName)
+        public async Task<List<string>> GetParameterValuesAsync(string parameterName)
+        {
+            var response = await GetParameterResultAsync(parameterName);
+
+            return response.Parameter.Value.Split(',').ToList();
+        }
+
+        public async Task<string> GetParameterValueAsync(string parameterName)
+        {
+            var response = await GetParameterResultAsync(parameterName);
+
+            return response.Parameter.Value;
+        }
+
+        private async Task<GetParameterResponse> GetParameterResultAsync(string parameterName)
         {
             var request = new GetParameterRequest()
             {
                 Name = parameterName
             };
 
-            var response = (Client as AmazonSimpleSystemsManagementClient).GetParameterAsync(request);
-
-            return response.Result.Parameter.Value.Split(',').ToList();
+            return await (Client as AmazonSimpleSystemsManagementClient).GetParameterAsync(request);
         }
     }
 }

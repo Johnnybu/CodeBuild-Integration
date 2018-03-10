@@ -1,6 +1,8 @@
 using System;
 using System.Linq;
+using System.Threading.Tasks;
 using Amazon.Lambda.Core;
+using Amazon.Runtime;
 using BuildEmailNotification.Model;
 
 // Assembly attribute to enable the Lambda function's JSON input to be converted into a .NET class.
@@ -17,7 +19,7 @@ namespace BuildEmailNotification
         /// <param name="input"></param>
         /// <param name="context"></param>
         /// <returns></returns>
-        public void FunctionHandler(Event input, ILambdaContext context)
+        public async Task<AmazonWebServiceResponse> SendEmailHandlerAsync(Event input, ILambdaContext context)
         {
             var logs = new CloudWatchLogsService()
             {
@@ -32,10 +34,10 @@ namespace BuildEmailNotification
                     input.Detail.CurrentPhase, input.Time),
                 Body = String.Format("The build with id of {0} has failed. \n" +
                             "Here are the last 25 lines of the log: \n {1}", input.Detail.BuildId,
-                            logs.GetCloudWatchLogEvents())
+                            logs.GetCloudWatchLogEventsAsync())
             };
 
-            email.SendEmail();
+            return await email.SendEmailAsync();
         }
     }
 }

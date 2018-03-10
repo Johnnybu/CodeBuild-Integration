@@ -1,6 +1,7 @@
 ﻿using Amazon.SimpleEmail;
 using Amazon.SimpleEmail.Model;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace BuildEmailNotification
 {
@@ -19,19 +20,19 @@ namespace BuildEmailNotification
             SsmService = new SimpleSystemsManagementService();
         }
 
-        public SendEmailResponse SendEmail()
+        public async Task<SendEmailResponse> SendEmailAsync()
         {
             var request = new SendEmailRequest()
             {
-                Destination = ConstructDestination(),
-                Source = SsmService.GetParameterValues(GetEnvironmentVariableValue("SOURCE_EMAIL"))[0],
+                Destination = await ConstructDestinationAsync(),
+                Source = await SsmService.GetParameterValueAsync(GetEnvironmentVariableValue("SOURCE_EMAIL")),
                 Message = ConstructMessage()
         };
 
             try
             {
-                var response = (Client as AmazonSimpleEmailServiceClient).SendEmailAsync(request);
-                return response.Result;
+                var response = await (Client as AmazonSimpleEmailServiceClient).SendEmailAsync(request);
+                return response;
             }
             catch (AmazonSimpleEmailServiceException e)
             {
@@ -59,11 +60,11 @@ namespace BuildEmailNotification
             };
         }
 
-        public Destination ConstructDestination()
+        public async Task<Destination> ConstructDestinationAsync()
         {
             return new Destination()
             {
-                ToAddresses = SsmService.GetParameterValues(GetEnvironmentVariableValue("TO_EMAIL"))
+                ToAddresses = await SsmService.GetParameterValuesAsync(GetEnvironmentVariableValue("TO_EMAIL"))
             };
         }
     }

@@ -2,6 +2,7 @@
 using Amazon.CloudWatchLogs.Model;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace BuildEmailNotification
 {
@@ -18,7 +19,7 @@ namespace BuildEmailNotification
             Client = new AmazonCloudWatchLogsClient(GetRegionEndpoint("CLOUDWATCH_REGION"));
         }
 
-        public string GetCloudWatchLogEvents()
+        public async Task<string> GetCloudWatchLogEventsAsync()
         {
             var events = new StringBuilder();
 
@@ -29,9 +30,9 @@ namespace BuildEmailNotification
                 Limit = LogRowLimit
             };
 
-            var response = (Client as AmazonCloudWatchLogsClient).GetLogEventsAsync(request);
+            var response = await (Client as AmazonCloudWatchLogsClient).GetLogEventsAsync(request);
 
-            foreach (OutputLogEvent logEvent in response.Result.Events)
+            foreach (OutputLogEvent logEvent in response.Events)
             {
                 events.AppendLine(logEvent.Timestamp + ": " + logEvent.Message);
             }
