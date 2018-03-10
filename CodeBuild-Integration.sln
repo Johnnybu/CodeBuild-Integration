@@ -1,19 +1,21 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27130.2027
+VisualStudioVersion = 15.0.27130.2024
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NightlyBuilds", "NightlyBuilds\NightlyBuilds.csproj", "{924EE756-4F4B-4C60-B081-2680D74B6D3F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BuildEmailNotification", "AWSLambda1\BuildEmailNotification.csproj", "{3E066827-8590-4EB9-AE9F-F5B5DC35072D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServiceBase", "ServiceBase\ServiceBase.csproj", "{ADB916AA-3C1D-4712-AADC-B22C389A8F7E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceBase", "ServiceBase\ServiceBase.csproj", "{ADB916AA-3C1D-4712-AADC-B22C389A8F7E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CloudWatchLogsService", "CloudWatchLogsService\CloudWatchLogsService.csproj", "{F6F7E117-1B98-4390-91B7-325A9178F32B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CloudWatchLogsService", "CloudWatchLogsService\CloudWatchLogsService.csproj", "{F6F7E117-1B98-4390-91B7-325A9178F32B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleEmailService", "SimpleEmailService\SimpleEmailService.csproj", "{0554FAD6-90BF-4E61-83EF-4012FE72A172}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleEmailService", "SimpleEmailService\SimpleEmailService.csproj", "{0554FAD6-90BF-4E61-83EF-4012FE72A172}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleSystemsManagementService", "SimpleSystemsManagementService\SimpleSystemsManagementService.csproj", "{8BCF3481-7D23-4F90-A52B-0C1B09C76A2A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleSystemsManagementService", "SimpleSystemsManagementService\SimpleSystemsManagementService.csproj", "{8BCF3481-7D23-4F90-A52B-0C1B09C76A2A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BuildEmailNotification", "BuildEmailNotification\BuildEmailNotification.csproj", "{0D2988E6-C6B4-44AF-879F-F04011EC26EF}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BuildSlackNotification", "BuildSlackNotification\BuildSlackNotification.csproj", "{BF546EC9-8EC6-4A8A-A39A-30575ACD1BFB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,10 +27,6 @@ Global
 		{924EE756-4F4B-4C60-B081-2680D74B6D3F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{924EE756-4F4B-4C60-B081-2680D74B6D3F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{924EE756-4F4B-4C60-B081-2680D74B6D3F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3E066827-8590-4EB9-AE9F-F5B5DC35072D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3E066827-8590-4EB9-AE9F-F5B5DC35072D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3E066827-8590-4EB9-AE9F-F5B5DC35072D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3E066827-8590-4EB9-AE9F-F5B5DC35072D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{ADB916AA-3C1D-4712-AADC-B22C389A8F7E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{ADB916AA-3C1D-4712-AADC-B22C389A8F7E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ADB916AA-3C1D-4712-AADC-B22C389A8F7E}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -45,6 +43,14 @@ Global
 		{8BCF3481-7D23-4F90-A52B-0C1B09C76A2A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8BCF3481-7D23-4F90-A52B-0C1B09C76A2A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8BCF3481-7D23-4F90-A52B-0C1B09C76A2A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0D2988E6-C6B4-44AF-879F-F04011EC26EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0D2988E6-C6B4-44AF-879F-F04011EC26EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0D2988E6-C6B4-44AF-879F-F04011EC26EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0D2988E6-C6B4-44AF-879F-F04011EC26EF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BF546EC9-8EC6-4A8A-A39A-30575ACD1BFB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BF546EC9-8EC6-4A8A-A39A-30575ACD1BFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BF546EC9-8EC6-4A8A-A39A-30575ACD1BFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BF546EC9-8EC6-4A8A-A39A-30575ACD1BFB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
