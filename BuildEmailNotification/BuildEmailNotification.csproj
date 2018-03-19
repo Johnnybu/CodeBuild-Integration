@@ -15,6 +15,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\CloudWatchLogsService\CloudWatchLogsService.csproj" />
+    <ProjectReference Include="..\InputModel\InputModel.csproj" />
     <ProjectReference Include="..\SimpleEmailService\SimpleEmailService.csproj" />
   </ItemGroup>
 

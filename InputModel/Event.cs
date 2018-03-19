@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
 
-namespace BuildEmailNotification.Model
+namespace InputModel
 {
     [JsonObject]
     public class Event

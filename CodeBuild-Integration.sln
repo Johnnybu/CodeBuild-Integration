@@ -17,7 +17,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BuildEmailNotification", "B
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BuildSlackNotification", "BuildSlackNotification\BuildSlackNotification.csproj", "{BF546EC9-8EC6-4A8A-A39A-30575ACD1BFB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeBuildService", "CodeBuildService\CodeBuildService.csproj", "{CAD09B42-D6DA-4156-B0C6-61C88699312A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodeBuildService", "CodeBuildService\CodeBuildService.csproj", "{CAD09B42-D6DA-4156-B0C6-61C88699312A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InputModel", "InputModel\InputModel.csproj", "{80EC0117-1080-4933-A15B-368604DDBAA9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -57,6 +59,10 @@ Global
 		{CAD09B42-D6DA-4156-B0C6-61C88699312A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CAD09B42-D6DA-4156-B0C6-61C88699312A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CAD09B42-D6DA-4156-B0C6-61C88699312A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{80EC0117-1080-4933-A15B-368604DDBAA9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{80EC0117-1080-4933-A15B-368604DDBAA9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{80EC0117-1080-4933-A15B-368604DDBAA9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{80EC0117-1080-4933-A15B-368604DDBAA9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

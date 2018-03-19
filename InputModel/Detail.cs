@@ -1,9 +1,6 @@
 ﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace BuildEmailNotification.Model
+namespace InputModel
 {
     [JsonObject]
     public class Detail
