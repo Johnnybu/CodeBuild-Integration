@@ -2,10 +2,11 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
+    <RootNamespace>AmazonService</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="AWSSDK.CloudWatchLogs" Version="3.3.4.3" />
+    <PackageReference Include="AWSSDK.CloudWatchLogs" Version="3.3.4.5" />
   </ItemGroup>
 
   <ItemGroup>

@@ -3,7 +3,7 @@ using Amazon.SimpleEmail.Model;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace BuildEmailNotification
+namespace AmazonService
 {
     public class SimpleEmailService : ServiceBase
     {
@@ -27,12 +27,11 @@ namespace BuildEmailNotification
                 Destination = await ConstructDestinationAsync(),
                 Source = await SsmService.GetParameterValueAsync(GetEnvironmentVariableValue("SOURCE_EMAIL")),
                 Message = ConstructMessage()
-        };
+            };
 
             try
             {
-                var response = await (Client as AmazonSimpleEmailServiceClient).SendEmailAsync(request);
-                return response;
+                return await (Client as AmazonSimpleEmailServiceClient).SendEmailAsync(request);
             }
             catch (AmazonSimpleEmailServiceException e)
             {

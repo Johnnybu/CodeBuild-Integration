@@ -1,10 +1,9 @@
 ﻿using Amazon.CloudWatchLogs;
 using Amazon.CloudWatchLogs.Model;
-using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BuildEmailNotification
+namespace AmazonService
 {
     public class CloudWatchLogsService : ServiceBase
     {

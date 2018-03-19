@@ -1,10 +1,8 @@
-using System;
-using System.Net;
-using System.Net.Http;
-using Amazon;
-using Amazon.CodeBuild;
-using Amazon.CodeBuild.Model;
+using System.Threading.Tasks;
 using Amazon.Lambda.Core;
+using Amazon.Runtime;
+using NightlyBuilds.Model;
+using AmazonService;
 
 // Assembly attribute to enable the Lambda function's JSON input to be converted into a .NET class.
 [assembly: LambdaSerializer(typeof(Amazon.Lambda.Serialization.Json.JsonSerializer))]
@@ -21,44 +19,10 @@ namespace NightlyBuilds
         /// <param name="buildSpec">The name of the buildspec the build should use.</param>
         /// <param name="context"></param>
         /// <returns></returns>
-        public string FunctionHandler(Input input, ILambdaContext context)
+        public async Task<AmazonWebServiceResponse> NightlyBuildHandlerAsync(Input input, ILambdaContext context)
         {
-            var client = new AmazonCodeBuildClient(RegionEndpoint.USEast2);
-
-            var request = new StartBuildRequest
-            {
-                ProjectName = input.ProjectName,
-                BuildspecOverride = input.BuildSpec
-            };
-
-            try
-            {
-                var response = client.StartBuildAsync(request);
-                if (response.Result.HttpStatusCode == HttpStatusCode.OK)
-                {
-                    return response.Result.HttpStatusCode.ToString();
-                }
-                else
-                {
-                    throw new HttpRequestException("An error occured while attempting to start the specified build");
-                }
-            }
-            catch (Exception e)
-            {
-                return e.Message;
-            }
+            return await new CodeBuildService()
+                .StartBuildAsync(input.ProjectName, input.BuildSpec);
         }
-    }
-
-    public class Input
-    {
-        public Input()
-        {
-            BuildSpec = "buildspec.yml";
-        }
-
-        public string ProjectName { get; set; }
-
-        public string BuildSpec { get; set; }
     }
 }

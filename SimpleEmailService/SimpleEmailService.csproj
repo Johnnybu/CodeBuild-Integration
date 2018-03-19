@@ -2,10 +2,11 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
+    <RootNamespace>AmazonService</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="AWSSDK.SimpleEmail" Version="3.3.6.1" />
+    <PackageReference Include="AWSSDK.SimpleEmail" Version="3.3.6.3" />
   </ItemGroup>
 
   <ItemGroup>

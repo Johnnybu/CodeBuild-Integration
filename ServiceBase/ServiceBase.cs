@@ -3,29 +3,29 @@ using Amazon.Runtime;
 using System;
 using System.Collections;
 
-namespace BuildEmailNotification
+namespace AmazonService
 {
     public class ServiceBase
     {
-        public IAmazonService Client { get; set; }
-        public IDictionary EnvironmentVariables { get; set; }
+        protected IAmazonService Client { get; set; }
+        private IDictionary EnvironmentVariables { get; set; }
 
-        public ServiceBase()
+        protected ServiceBase()
         {
             EnvironmentVariables = Environment.GetEnvironmentVariables();
         }
 
-        public Exception HandleServiceException(AmazonServiceException exception, string serviceMethod)
+        protected Exception HandleServiceException(AmazonServiceException exception, string serviceMethod)
         {
             return new Exception(String.Format("An error occured while calling the service {0}", serviceMethod), exception);
         }
 
-        public RegionEndpoint GetRegionEndpoint(string endpointParameter)
+        protected RegionEndpoint GetRegionEndpoint(string endpointParameter)
         {
             return RegionEndpoint.GetBySystemName(GetEnvironmentVariableValue(endpointParameter));
         }
 
-        public string GetEnvironmentVariableValue(string variableName)
+        protected string GetEnvironmentVariableValue(string variableName)
         {
             if (EnvironmentVariables.Contains(variableName))
             {
