@@ -4,6 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 
 using Amazon.Lambda.Core;
+using InputModel;
+using CodeBuildIntegration;
 
 // Assembly attribute to enable the Lambda function's JSON input to be converted into a .NET class.
 [assembly: LambdaSerializer(typeof(Amazon.Lambda.Serialization.Json.JsonSerializer))]
@@ -19,9 +21,9 @@ namespace BuildSlackNotification
         /// <param name="input"></param>
         /// <param name="context"></param>
         /// <returns></returns>
-        public string FunctionHandler(string input, ILambdaContext context)
+        public async Task<bool> FunctionHandlerAsync(Event input, ILambdaContext context)
         {
-            
+            return await new SlackWebHookService().SendSlackMessageAsync();
         }
     }
 }
