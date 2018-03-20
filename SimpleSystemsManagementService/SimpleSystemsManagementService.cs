@@ -31,7 +31,8 @@ namespace AmazonService
         {
             var request = new GetParameterRequest()
             {
-                Name = parameterName
+                Name = parameterName,
+                WithDecryption = true
             };
 
             return await (Client as AmazonSimpleSystemsManagementClient).GetParameterAsync(request);

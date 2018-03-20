@@ -13,5 +13,7 @@ namespace InputModel
         public DateTime Time { get; set; }
 
         public Detail Detail { get; set; }
+
+        public string Region { get; set; }
     }
 }

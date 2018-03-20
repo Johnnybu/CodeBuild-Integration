@@ -21,9 +21,14 @@ namespace BuildSlackNotification
         /// <param name="input"></param>
         /// <param name="context"></param>
         /// <returns></returns>
-        public async Task<bool> FunctionHandlerAsync(Event input, ILambdaContext context)
+        public async Task<bool> SlackMessageHandlerAsync(Event input, ILambdaContext context)
         {
-            return await new SlackWebHookService().SendSlackMessageAsync();
+            var message = string.Format("A CodeBuild project named: {2} has failed while executing the phase: {0}. \n" +
+                    "You may review the build history on the AWS console at the following link: " +
+                    "<https://{1}.console.aws.amazon.com/codebuild/home?region={1}#/projects/{2}/view|Click Here>",
+                    input.Detail.CurrentPhase, input.Region, input.Detail.ProjectName);
+
+            return await new SlackWebHookService().SendSlackMessageAsync(message, "#general", "AWSCodeBuildBot", "RobotFace");
         }
     }
 }
