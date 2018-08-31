@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace AmazonService
 {
-    public class CloudWatchLogsService : ServiceBase
+    public class CloudWatchLogsService : ServiceBase<AmazonCloudWatchLogsClient>
     {
         public string LogGroupName { get; set; }
 
@@ -29,7 +29,7 @@ namespace AmazonService
                 Limit = LogRowLimit
             };
 
-            var response = await (Client as AmazonCloudWatchLogsClient).GetLogEventsAsync(request);
+            var response = await Client.GetLogEventsAsync(request);
 
             foreach (OutputLogEvent logEvent in response.Events)
             {

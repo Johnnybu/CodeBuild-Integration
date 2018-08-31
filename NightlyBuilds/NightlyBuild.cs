@@ -9,7 +9,7 @@ using AmazonService;
 
 namespace NightlyBuilds
 {
-    public class Function
+    public class NightlyBuild
     {
         
         /// <summary>

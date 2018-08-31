@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace AmazonService
 {
-    public class CodeBuildService : ServiceBase
+    public class CodeBuildService : ServiceBase<AmazonCodeBuildClient>
     {
         public CodeBuildService()
         {
@@ -19,7 +19,7 @@ namespace AmazonService
                 BuildspecOverride = buildSpec
             };
 
-            return await (Client as AmazonCodeBuildClient).StartBuildAsync(request);
+            return await Client.StartBuildAsync(request);
         }
     }
 }

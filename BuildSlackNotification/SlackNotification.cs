@@ -12,7 +12,7 @@ using CodeBuildIntegration;
 
 namespace BuildSlackNotification
 {
-    public class Function
+    public class SlackNotification
     {
         
         /// <summary>

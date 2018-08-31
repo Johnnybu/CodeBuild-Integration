@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace AmazonService
 {
-    public class SimpleEmailService : ServiceBase
+    public class SimpleEmailService : ServiceBase<AmazonSimpleEmailServiceClient>
     {
         public Message Message { get; }
         public List<string> ToAddresses { get; set; }
@@ -31,7 +31,7 @@ namespace AmazonService
 
             try
             {
-                return await (Client as AmazonSimpleEmailServiceClient).SendEmailAsync(request);
+                return await Client.SendEmailAsync(request);
             }
             catch (AmazonSimpleEmailServiceException e)
             {

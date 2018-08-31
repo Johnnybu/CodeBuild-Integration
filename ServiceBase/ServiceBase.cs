@@ -5,9 +5,9 @@ using System.Collections;
 
 namespace AmazonService
 {
-    public class ServiceBase
+    public class ServiceBase<T> where T : IAmazonService
     {
-        protected IAmazonService Client { get; set; }
+        protected T Client { get; set; }
         private IDictionary EnvironmentVariables { get; set; }
 
         protected ServiceBase()

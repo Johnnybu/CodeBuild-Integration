@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AmazonService
 {
-    public class SimpleSystemsManagementService : ServiceBase
+    public class SimpleSystemsManagementService : ServiceBase<AmazonSimpleSystemsManagementClient>
     {
         public SimpleSystemsManagementService()
         {
@@ -35,7 +35,7 @@ namespace AmazonService
                 WithDecryption = true
             };
 
-            return await (Client as AmazonSimpleSystemsManagementClient).GetParameterAsync(request);
+            return await Client.GetParameterAsync(request);
         }
     }
 }

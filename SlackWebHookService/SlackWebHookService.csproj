@@ -1,12 +1,12 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
     <RootNamespace>CodeBuildIntegration</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Slack.Webhooks" Version="1.0.3" />
+    <PackageReference Include="Slack.Webhooks" Version="1.0.5" />
   </ItemGroup>
 
   <ItemGroup>

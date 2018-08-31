@@ -262,3 +262,6 @@ __pycache__/
 
 #aws lambda
 aws-lambda-tools-defaults.json
+
+# vscode
+.vscode
