@@ -11,7 +11,7 @@ using InputModel;
 
 namespace BuildEmailNotification
 {
-    public class Function
+    public class EmailNotification
     {
         
         /// <summary>
