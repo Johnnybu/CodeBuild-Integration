@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace AmazonService
 {
-    public class SimpleEmailService : ServiceBase<AmazonSimpleEmailServiceClient>
+    public class SimpleEmailService : AmazonServiceBase<AmazonSimpleEmailServiceClient>
     {
         public Message Message { get; }
         public List<string> ToAddresses { get; set; }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AmazonService
 {
-    public class SimpleSystemsManagementService : ServiceBase<AmazonSimpleSystemsManagementClient>
+    public class SimpleSystemsManagementService : AmazonServiceBase<AmazonSimpleSystemsManagementClient>
     {
         public SimpleSystemsManagementService()
         {

@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace AmazonService
 {
-    public class CloudWatchLogsService : ServiceBase<AmazonCloudWatchLogsClient>
+    public class CloudWatchLogsService : AmazonServiceBase<AmazonCloudWatchLogsClient>
     {
         public string LogGroupName { get; set; }
 

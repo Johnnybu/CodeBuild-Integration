@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace AmazonService
 {
-    public class CodeBuildService : ServiceBase<AmazonCodeBuildClient>
+    public class CodeBuildService : AmazonServiceBase<AmazonCodeBuildClient>
     {
         public CodeBuildService()
         {

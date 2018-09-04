@@ -5,12 +5,12 @@ using System.Threading.Tasks;
 
 namespace CodeBuildIntegration
 {
-    public class SlackWebHookService
+    public class SlackWebHookService : ServiceBase
     {
         public async Task<bool> SendSlackMessageAsync(string message, string channel, string userName, string icon)
         {
             var uri = await new SimpleSystemsManagementService()
-                .GetParameterValueAsync("CodeBuild_Notify_Slack");
+                .GetParameterValueAsync(GetEnvironmentVariableValue("SLACK_URI"));
 
             var slackClient = new SlackClient(uri);
 

@@ -25,7 +25,8 @@ namespace BuildEmailNotification
             var logs = new CloudWatchLogsService()
             {
                 LogGroupName = @"/aws/codebuild/" + input.Detail.ProjectName,
-                LogStreamName = input.Detail.BuildId.Split('/').Last().Split(':').Last()
+                LogStreamName = input.Detail.BuildId.Split('/').Last().Split(':').Last(),
+                LogRowLimit = 10000
             };
 
             var email = new SimpleEmailService()
