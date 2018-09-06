@@ -35,7 +35,7 @@ namespace BuildEmailNotification
                     input.Detail.CurrentPhase, input.Time),
                 Body = String.Format("The build with id of {0} has failed. \n" +
                             "Here is the log transcript: \n {1}", input.Detail.BuildId,
-                            logs.GetCloudWatchLogEventsAsync())
+                            await logs.GetCloudWatchLogEventsAsync())
             };
 
             return await email.SendEmailAsync();
