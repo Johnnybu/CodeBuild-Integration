@@ -23,12 +23,14 @@ namespace BuildSlackNotification
         /// <returns></returns>
         public async Task<bool> SlackMessageHandlerAsync(Event input, ILambdaContext context)
         {
-            var message = string.Format("A CodeBuild project named: {2} has reported a {3} state during the {0} phase. \n" +
-                    "You may review the build history on the AWS console at the following link: " +
-                    "<https://{1}.console.aws.amazon.com/codebuild/home?region={1}#/projects/{2}/view|Click Here>",
+            var message = string.Format("The {2} project has reported a {3} state during the {0} phase. \n"  +
+                    "<https://{1}.console.aws.amazon.com/codebuild/home?region={1}#/projects/{2}/view|" + 
+                    "Click here> to view build history",
                     input.Detail.CurrentPhase, input.Region, input.Detail.ProjectName, input.Detail.BuildStatus);
 
-            return await new SlackWebHookService().SendSlackMessageAsync(message, "#nrrc-app-support", "AWSCodeBuildBot", "RobotFace");
+            return await new SlackWebHookService()
+                    .SendSlackMessageAsync(message, "#nrrc-app-support", 
+                    "AWSCodeBuildBot", "RobotFace");
         }
     }
 }
