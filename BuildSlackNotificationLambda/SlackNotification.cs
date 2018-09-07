@@ -25,7 +25,7 @@ namespace BuildSlackNotification
         {
             var message = string.Format("The {2} project has reported a {3} state during the {0} phase. \n"  +
                     "<https://{1}.console.aws.amazon.com/codebuild/home?region={1}#/projects/{2}/view|" + 
-                    "Click here> to view build history",
+                    "Click here> to view build history.",
                     input.Detail.CurrentPhase, input.Region, input.Detail.ProjectName, input.Detail.BuildStatus);
 
             return await new SlackWebHookService()
